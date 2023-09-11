@@ -1,18 +1,19 @@
-
+//@ts-check
 import { OAIBaseComponent, WorkerContext, OmniComponentMacroTypes } from 'mercs_rete';
 
-function generateTitle(name) 
+function generateTitle(value) 
 {
-    const title = name
+    const title = value
       .replace(/_/g, ' ')  // Replace all underscores with spaces
       .replace(/\b\w/g, (match) => match.toUpperCase()); // Capitalize the first letter of each word
 
     return title;
 }
-  
+ 
+
 function setComponentInputs(component, inputs) {
     inputs.forEach(function (input) {
-        var name = input.name, type = input.type, customSocket = input.customSocket, description = input.description, default_value = input.defaultValue, title = input.title, choices = input.choices, minimum = input.minimum, maximum = input.maximum, step = input.step;
+        var name = input.name, type = input.type, customSocket = input.customSocket, description = input.description, default_value = input.defaultValue, title = input.title, choices = input.choices, minimum = input.minimum, maximum = input.maximum, step = input.step, allow_multiple = input.allowMultiple;
         
         if (!title || title == '') title = generateTitle(name);
         
@@ -24,6 +25,7 @@ function setComponentInputs(component, inputs) {
             .set('minimum', minimum || null)
             .set('maximum', maximum || null)
             .set('step', step || null)
+            .set('allowMultiple', allow_multiple || null)
             .setDefault(default_value)
             .toOmniIO()
         );
