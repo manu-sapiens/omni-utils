@@ -1,7 +1,8 @@
+//@ts-check
 // cdn.js
-
 import { is_valid, console_log, clean_string } from './utils.js';
 import { user_db_put, user_db_get, user_db_delete } from './database.js';
+
 async function save_text_to_cdn(ctx, text)
 {
     const buffer = Buffer.from(text);
@@ -125,4 +126,6 @@ async function gather_all_texts_from_documents(ctx, documents)
     return texts;
 }
 
-export {save_text_to_cdn, save_json_to_cdn, get_json_from_cdn, save_json_to_cdn_as_buffer, get_chunks_from_cdn, get_cached_cdn, save_chunks_cdn_to_db, gather_all_texts_from_documents}
+
+
+export { save_text_to_cdn, save_json_to_cdn, get_json_from_cdn, save_json_to_cdn_as_buffer, get_chunks_from_cdn, get_cached_cdn, save_chunks_cdn_to_db, gather_all_texts_from_documents};
