@@ -1,5 +1,5 @@
 // utils.js
-import { omnilog } from 'mercs_shared'
+import { omnilog } from 'omni-shared'
 
 let VERBOSE = true;
 
@@ -131,6 +131,14 @@ function console_log(...args)
     }
 }
 
+function console_warn(...args)
+{
+    if (VERBOSE == true)
+    {
+        omnilog.warn(...args);
+    }
+}
+
 function combineStringsWithoutOverlap(str1, str2)
 {
     // Find the maximum possible overlap between the two strings
@@ -231,4 +239,4 @@ function parse_text_to_array(candidate_text)
 }
 
 
-export {is_valid, clean_string, sanitizeJSON, console_log, combineStringsWithoutOverlap, rebuildToTicketObjectsIfNeeded, parse_text_to_array, pauseForSeconds, printObject }
+export {is_valid, clean_string, sanitizeJSON, console_log, console_warn, combineStringsWithoutOverlap, rebuildToTicketObjectsIfNeeded, parse_text_to_array, pauseForSeconds, printObject }

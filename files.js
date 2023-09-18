@@ -1,7 +1,6 @@
 import { ClientExtension, ClientUtils } from 'mercs_client'
 import fs from 'fs/promises';
 import path from 'path';
-//import { omnilog } from 'mercs_shared';
 
 async function fetchJsonFromUrl(url)
 {
