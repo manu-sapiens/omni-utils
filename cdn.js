@@ -3,8 +3,10 @@
 import { is_valid, console_log, clean_string } from './utils.js';
 import { user_db_put, user_db_get, user_db_delete } from './database.js';
 
+
 async function save_text_to_cdn(ctx, text)
 {
+    //@ts-ignore
     const buffer = Buffer.from(text);
     const cdn_response = await ctx.app.cdn.putTemp(buffer, { mimeType: 'text/plain; charset=utf-8', userId: ctx.userId });
     console_log(`cdn_response = ${JSON.stringify(cdn_response)}`);
@@ -15,6 +17,7 @@ async function save_text_to_cdn(ctx, text)
 async function save_json_to_cdn(ctx, json)
 {
     const responses_string = JSON.stringify(json, null, 2).trim();
+    //@ts-ignore
     const buffer = Buffer.from(responses_string);
     const cdn_response = await ctx.app.cdn.putTemp(buffer, { mimeType: 'text/plain; charset=utf-8', userId: ctx.userId });
     console_log(`cdn_response = ${JSON.stringify(cdn_response)}`);
@@ -34,6 +37,7 @@ async function get_json_from_cdn(ctx, cdn_response)
     try
     {
         const str = response_from_cdn.data.toString();
+        //@ts-ignore
         const buffer = Buffer.from(str, 'base64');
         const json_string = buffer.toString('utf8');
 
@@ -51,6 +55,7 @@ async function get_json_from_cdn(ctx, cdn_response)
 async function save_json_to_cdn_as_buffer(ctx, json)
 {
     const responses_string = JSON.stringify(json, null, 2).trim();
+    //@ts-ignore
     const buffer = Buffer.from(responses_string);
     const cdn_response = await ctx.app.cdn.putTemp(buffer, { userId: ctx.userId });
     console_log(`cdn_response = ${JSON.stringify(cdn_response)}`);
