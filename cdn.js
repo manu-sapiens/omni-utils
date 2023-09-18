@@ -96,15 +96,15 @@ async function save_chunks_cdn_to_db(ctx, chunks_cdn, chunks_id)
 
 
 // return an array of texts gathered from all the documents (1 per document)
-async function gather_all_texts_from_documents(ctx, documents)
+async function downloadTextsFromCdn(ctx, documents_cdns)
 {
-    if (is_valid(documents) == false) throw new Error(`ERROR: documents is invalid. documents = ${JSON.stringify(documents)}`);
+    if (is_valid(documents_cdns) == false) throw new Error(`ERROR: documents is invalid. documents = ${JSON.stringify(documents_cdns)}`);
 
     let texts = [];
-    for (let i = 0; i < documents.length; i++) 
+    for (let i = 0; i < documents_cdns.length; i++) 
     {
 
-        const document_cdn = documents[i];
+        const document_cdn = documents_cdns[i];
         //TBD: convert docs files to text when necessary
         try
         {
@@ -133,4 +133,4 @@ async function gather_all_texts_from_documents(ctx, documents)
 
 
 
-export { save_text_to_cdn, save_json_to_cdn, get_json_from_cdn, save_json_to_cdn_as_buffer, get_chunks_from_cdn, get_cached_cdn, save_chunks_cdn_to_db, gather_all_texts_from_documents};
+export { save_text_to_cdn, save_json_to_cdn, get_json_from_cdn, save_json_to_cdn_as_buffer, get_chunks_from_cdn, get_cached_cdn, save_chunks_cdn_to_db, downloadTextsFromCdn};
