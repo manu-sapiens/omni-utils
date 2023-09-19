@@ -1,4 +1,4 @@
-import { ClientExtension, ClientUtils } from 'mercs_client'
+import { ClientExtension, ClientUtils } from 'omni-client-services'
 import fs from 'fs/promises';
 import path from 'path';
 
